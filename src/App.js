@@ -1,7 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>;
+}
+
 function App() {
+  const name = "Derrick Mwema";
+
   return (
     <div className="App">
       <header className="App-header">
@@ -19,7 +25,10 @@ function App() {
         </a>
       </header>
       <body>
-      <h1>Hello, world!</h1>
+        
+      <h1>Hello, {name}</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+      <Welcome name="Sara" />
       </body>
     </div>
   );

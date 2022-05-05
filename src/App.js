@@ -67,9 +67,16 @@ const info={
   }
 }
 
+function Sum(a, b){
+  return a + b
+}
+
+const values={
+  a: 1,
+  b: 2
+}
 
 function App() {
-  const name = 'Derrick Mwema';
 
   return (
     <div className='App'>
@@ -88,7 +95,7 @@ function App() {
         </a>
       </header>
       <body>
-       
+       <h1>{Sum(values.a,values.b)}</h1>
         <div>
         <Welcome name='Sara' />
         <Welcome name='Mwema' />

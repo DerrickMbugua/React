@@ -13,21 +13,25 @@ function formatDate(date) {
 function Comment(props) {
   return (
     <div className='Comment'>
-      <UserInfo user={info.user} />
+      <UserInfo 
+        user={comment.author}
+        />     
       <div className='Comment-text'>{props.text}</div>
       <div className='Comment-date'>{formatDate(props.date)}</div>
     </div>
   );
 }
 
-const comment = {
-  date: new Date(),
-  text: 'I hope you enjoy learning React!',
-  author: {
-    name: 'Hello Kitty',
-    avatarUrl: 'http://placekitten.com/g/64/64',
-  },
-};
+function UserInfo(props) {
+  return (
+    <div className='UserInfo'>
+      <Avatar user={props.user} />
+      <div className='UserInfo-name'>
+        {props.user.name}
+        </div>
+    </div>
+  );
+}
 
 function Avatar(props) {
   return (
@@ -35,56 +39,38 @@ function Avatar(props) {
   );
 }
 
-const avatar = {
-  user: {
-    avatarUrl: 'http://placekitten.com/g/64/64',
-    name: 'Only one Dero',
-  },
-};
-
-function UserInfo(props) {
-  return (
-    <div className='UserInfo'>
-      <Avatar user={props.user} />
-      <div className='UserInfo-name'>{props.user.name}</div>
-    </div>
-  );
-}
-
-const info = {
-  user: {
-    name: 'Big man',
+const comment = {
+  date: new Date(),
+  text: 'React Guru',
+  author: {
+    name: 'Pussy',
     avatarUrl: 'http://placekitten.com/g/64/64',
   },
 };
 
-function Sum(a, b) {
-  return a + b;
+function Sum(a, b){
+return a + b
 }
 
-function Withdraw(total, amount) {
-  total -= amount;
-  return total;
-}
-
-const values = {
-  a: 1,
-  b: 2,
-};
-
-class Clock extends React.Component {
+class Clock extends React.Component{
   constructor(props){
     super(props)
-    this.state = {date: new Date()}
+    this.state = {
+      date: new Date(),
+      name: 'Derrick M'
+    }
   }
-  render() {
-    return (
+
+  render(){
+    return(
       <div>
-        <h1>
-          <h1>Hello, {this.state.date.toLocaleDateString()}</h1>
-        </h1>
+        <div>
+        <h1>What's up D</h1>
+       <h2>{formatDate(this.state.date)}</h2> 
+       <h3>{this.state.name}</h3>
+        </div>   
       </div>
-    );
+    )
   }
 }
 
@@ -106,22 +92,15 @@ function App() {
         </a>
       </header>
       <body>
+        <Welcome name='Derro' />
+        <Comment
+          date={comment.date}
+          text={comment.text}
+          author={comment.author}
+        />
+        {Sum(2,3)}
         <Clock />
-        <h1>{Sum(values.a, values.b)}</h1>
-        <h1>{Withdraw(5, 2)}</h1>
-        <div>
-          <Welcome name='Sara' />
-          <Welcome name='Mwema' />
-          <Welcome name='Dero' />
-        </div>
-
-        <div>
-          <Comment
-            date={comment.date}
-            text={comment.text}
-            author={comment.author}
-          />
-        </div>
+        
       </body>
     </div>
   );

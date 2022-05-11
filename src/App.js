@@ -61,6 +61,23 @@ class Clock extends React.Component{
     }
   }
 
+  componentDidMount() {
+    this.timerID = setInterval(
+      () => this.tick(),
+      1000
+    );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    });
+  }
+  
   render(){
     return(
       <div>
@@ -69,6 +86,24 @@ class Clock extends React.Component{
        <h2>{formatDate(this.state.date)}</h2> 
        <h3>{this.state.name}</h3>
         </div>   
+      </div>
+    )
+  }
+}
+
+const details= {
+  name: 'Dext'
+}
+
+class Details extends React.Component{
+  constructor(props){
+    super(props)
+    this.state = {name: details.name}
+  }
+  render(){
+    return(
+      <div>
+        <h2>Niaje {this.state.name}</h2>
       </div>
     )
   }
@@ -100,6 +135,7 @@ function App() {
         />
         {Sum(2,3)}
         <Clock />
+        <Details />
         
       </body>
     </div>
